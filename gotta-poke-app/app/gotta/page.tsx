@@ -1,15 +1,10 @@
 "use client";
 import { useEffect } from "react";
+import { getPoke } from "./actions";
 
 const GottaPokePage = () => {
-  useEffect(() => {
-    const getPoke = async () => {
-      const url = "https://pokeapi.co/api/v2/pokemon?limit=10";
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-    };
-    getPoke();
+  useEffect(async () => {
+    await getPoke();
   }, []);
   return <div></div>;
 };
