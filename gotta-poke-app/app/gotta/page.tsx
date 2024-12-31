@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { delay } from "../_utils/delay";
-import PoketmonCard from "./PoketmonCard";
+import PoketmonCard from "./_components/PoketmonCard";
 
 const isGetPokeResponse = (data: any): data is PoketmonInfo => {
   return typeof data === "object" && typeof data.id === "number";
