@@ -1,0 +1,21 @@
+.contents {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  height: auto;
+  align-items: center;
+}
+.title {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  & > button {
+    width: 100px;
+    height: 40px;
+  }
+}
+.contentBox {
+  display: flex;
+}

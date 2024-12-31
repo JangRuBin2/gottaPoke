@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { delay } from "../_utils/delay";
 import PoketmonCard from "./_components/PoketmonCard";
-
+import styles from "./GottaPokePage.module.css";
 const isGetPokeResponse = (data: any): data is PoketmonInfo => {
   return typeof data === "object" && typeof data.id === "number";
 };
@@ -11,6 +11,7 @@ const GottaPokePage = () => {
   const [cardInfo, setCardInfo] = useState<PoketmonInfo[]>();
   const getPoke = async () => {
     try {
+      setCardInfo([]);
       await delay(300);
       const result: PoketmonInfo[] = [];
       for (let i = 0; i < 5; i++) {
@@ -36,18 +37,22 @@ const GottaPokePage = () => {
     }
   };
   return (
-    <div>
-      <h3>{"포켓몬 자판기"}</h3>
-      <button onClick={getPoke}>{"뽑기"}</button>
-      {cardInfo?.length && (
-        <>
-          {cardInfo.map((card, idx) => (
-            <PoketmonCard key={idx} poketmonInfo={card}></PoketmonCard>
-          ))}
-        </>
-      )}
+    <div className={styles.contents}>
+      <div className={styles.title}>
+        <h3>{"포켓몬 자판기"}</h3>
+        <button onClick={getPoke}>{"뽑기"}</button>
+      </div>
+      <div className={styles.contentBox}>
+        {cardInfo?.length && (
+          <>
+            {cardInfo.map((card, idx) => (
+              <PoketmonCard key={idx} poketmonInfo={card}></PoketmonCard>
+            ))}
+          </>
+        )}
+      </div>
     </div>
   );
 };
-const getRandomNumber = () => Math.floor(Math.random() * 1062) + 1;
+const getRandomNumber = () => Math.floor(Math.random() * 1025) + 1;
 export default GottaPokePage;
