@@ -1,0 +1,13 @@
+.cardContainer {
+  width: 200px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.disabled {
+  background-color: rgb(37, 42, 48);
+}
