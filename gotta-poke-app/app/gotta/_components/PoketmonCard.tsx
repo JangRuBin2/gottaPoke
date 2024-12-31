@@ -27,7 +27,8 @@ const PoketmonCard = ({
             <span>
               <Image
                 src={poke.sprites.front_default}
-                layout="intrinsic"
+                layout="fill"
+                objectFit="contain"
                 alt={`gottaPoke_${poke.name}`}
               ></Image>
             </span>
