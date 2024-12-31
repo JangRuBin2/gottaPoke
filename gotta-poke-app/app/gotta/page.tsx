@@ -1,22 +1,49 @@
 "use client";
 
-type GetPokeResponse = {
-  name: string;
-  url: string;
+import { useState } from "react";
+import { delay } from "../_utils/delay";
+type Cries = {
+  latest: string;
+  legacy: string;
 };
-const isGetPokeResponse = (data: any): data is GetPokeResponse => {
-  return typeof data === "object" && Array.isArray(data.results);
+type Sprites = {
+  back_default: string;
+  back_shiny: string;
+  front_default: string;
+  front_shiny: string;
+};
+type PoketmonInfo = {
+  // 울음소리
+  cries: Cries;
+  id: number;
+  name: string;
+  // 정렬순서인듯함
+  order: string;
+  // 이미지 및 상세정보
+  sprites: Sprites;
+  // 무게
+  weight: number;
+};
+const isGetPokeResponse = (data: any): data is PoketmonInfo => {
+  return typeof data === "object" && typeof data.id === "number";
 };
 const GottaPokePage = () => {
+  const [cardInfo, setCardInfo] = useState<PoketmonInfo[]>();
   const getPoke = async () => {
     try {
-      const url = "https://pokeapi.co/api/v2/pokemon?limit=10";
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-      if (!isGetPokeResponse(data))
-        throw new Error("포켓몬 데이터를 가져오는데 실패했습니다.");
-      console.log(data);
+      await delay(300);
+      const result: PoketmonInfo[] = [];
+      for (let i = 0; i < 5; i++) {
+        const url = `https://pokeapi.co/api/v2/pokemon/${getRandomNumber()}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        if (!response.ok)
+          throw new Error("포켓몬 데이터를 가져오는데 실패했습니다.");
+        if (!isGetPokeResponse(data))
+          throw new Error("올바르지 않은 반환값입니다.");
+        result.push(data);
+      }
+      console.log("result:", result);
       alert("포켓몬이 왔습니다~");
     } catch (error) {
       alert(
@@ -34,5 +61,5 @@ const GottaPokePage = () => {
     </div>
   );
 };
-
+const getRandomNumber = () => Math.floor(Math.random() * 1062) + 1;
 export default GottaPokePage;
