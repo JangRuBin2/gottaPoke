@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { delay } from "../_utils/delay";
+import PoketmonCard from "./PoketmonCard";
 
 const isGetPokeResponse = (data: any): data is PoketmonInfo => {
   return typeof data === "object" && typeof data.id === "number";
@@ -24,6 +25,7 @@ const GottaPokePage = () => {
       }
       console.log("result:", result);
       alert("포켓몬이 왔습니다~");
+      setCardInfo(result);
     } catch (error) {
       alert(
         error instanceof Error
@@ -40,7 +42,7 @@ const GottaPokePage = () => {
       {cardInfo?.length && (
         <>
           {cardInfo.map((card, idx) => (
-            <div key={idx}>{card.id}</div>
+            <PoketmonCard key={idx} poketmonInfo={card}></PoketmonCard>
           ))}
         </>
       )}
