@@ -2,28 +2,7 @@
 
 import { useState } from "react";
 import { delay } from "../_utils/delay";
-type Cries = {
-  latest: string;
-  legacy: string;
-};
-type Sprites = {
-  back_default: string;
-  back_shiny: string;
-  front_default: string;
-  front_shiny: string;
-};
-type PoketmonInfo = {
-  // 울음소리
-  cries: Cries;
-  id: number;
-  name: string;
-  // 정렬순서인듯함
-  order: string;
-  // 이미지 및 상세정보
-  sprites: Sprites;
-  // 무게
-  weight: number;
-};
+
 const isGetPokeResponse = (data: any): data is PoketmonInfo => {
   return typeof data === "object" && typeof data.id === "number";
 };
@@ -58,6 +37,13 @@ const GottaPokePage = () => {
     <div>
       <h3>{"포켓몬 자판기"}</h3>
       <button onClick={getPoke}>{"뽑기"}</button>
+      {cardInfo?.length && (
+        <>
+          {cardInfo.map((card, idx) => (
+            <div key={idx}>{card.id}</div>
+          ))}
+        </>
+      )}
     </div>
   );
 };
