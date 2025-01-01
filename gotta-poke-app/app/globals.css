@@ -3,13 +3,16 @@
   padding: 0;
   margin: 0;
 }
+
 html,
 body {
   width: 100vw;
   height: 100vh;
   background-color: var(--ligth-primary-color);
 }
-
+a {
+  text-decoration: none;
+}
 :root {
   --thin-border: 1px solid #f6cece;
   --secondary-color: #6fe398;

@@ -11,7 +11,7 @@
     width: 80%;
     height: 200px;
   }
-  & > p {
+  & > a {
     color: var(--gray-color);
     animation: fadeInOut 1.5s infinite;
     font-size: 1.2rem;

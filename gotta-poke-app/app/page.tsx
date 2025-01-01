@@ -1,5 +1,6 @@
 import mainImage from "@/app/_utils/images/pngwing.png";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./mainPage.module.css";
 const MainPage = () => {
   return (
@@ -13,7 +14,7 @@ const MainPage = () => {
             style={{ objectFit: "contain" }}
           />
         </span>
-        <p>{"시작하려면 화면을 눌러주세요."}</p>
+        <Link href={"/gotta"}>{"시작하려면 화면을 눌러주세요."}</Link>
       </div>
     </>
   );
