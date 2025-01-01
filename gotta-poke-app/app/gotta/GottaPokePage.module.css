@@ -1,11 +1,12 @@
 .contents {
   display: flex;
   flex-direction: column;
-  width: 60vw;
   height: auto;
   align-items: center;
+  width: 100%;
 }
 .title {
+  padding: 20px;
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -18,4 +19,6 @@
 }
 .contentBox {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

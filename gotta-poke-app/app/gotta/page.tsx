@@ -2,19 +2,20 @@
 
 import { useState } from "react";
 import { delay } from "../_utils/delay";
-import PoketmonCard from "./_components/PoketmonCard";
 import styles from "./GottaPokePage.module.css";
+import PoketmonCard from "./_components/PoketmonCard";
 const isGetPokeResponse = (data: any): data is PoketmonInfo => {
   return typeof data === "object" && typeof data.id === "number";
 };
 const GottaPokePage = () => {
   const [cardInfo, setCardInfo] = useState<PoketmonInfo[]>();
+
   const getPoke = async () => {
     try {
       setCardInfo([]);
       await delay(300);
       const result: PoketmonInfo[] = [];
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 6; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${getRandomNumber()}`;
         const response = await fetch(url);
         const data = await response.json();
