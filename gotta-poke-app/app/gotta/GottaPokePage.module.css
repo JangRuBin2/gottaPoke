@@ -1,24 +1,92 @@
 .contents {
   display: flex;
   flex-direction: column;
-  height: auto;
+  min-height: 500px;
   align-items: center;
   width: 100%;
+  gap: 10px;
+  scrollbar-width: thin;
+}
+.loading {
+  height: 100%;
 }
 .title {
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   display: flex;
   gap: 20px;
   justify-content: center;
   align-items: center;
   width: 100%;
-  & > button {
-    width: 100px;
-    height: 40px;
+  height: 10%;
+  color: white;
+  & > h1 {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   }
 }
+
 .contentBox {
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 20px;
+  padding-bottom: 120px; /* handler 높이만큼 여백 추가 */
+  align-items: center;
+  min-height: 500px;
+  gap: 8px;
+  box-sizing: border-box; /* padding이 height에 포함되도록 설정 */
+}
+
+.handler {
+  padding: 10px;
+  background-color: #324348;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  height: 100px; /* handler의 높이 지정 */
+}
+
+.handler .gotta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #324348;
+  width: 320px;
+  height: 100px;
+  border: 1px solid var(--gray-color);
+  border-radius: 5px;
+}
+
+.handler .save {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 10px 0 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.handler .save > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  background-color: #b3ccd9;
+  border: 1px solid var(--gray-color);
+  width: 100px;
+  height: 32px;
+  padding: 5px;
+  border-radius: 5px;
+  & > div {
+    display: flex;
+    align-items: center;
+  }
 }

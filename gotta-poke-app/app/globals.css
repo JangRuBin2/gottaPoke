@@ -3,8 +3,21 @@
   padding: 0;
   margin: 0;
 }
+
 html,
 body {
   width: 100vw;
   height: 100vh;
+  background: linear-gradient(to bottom, #607d8b, #324148);
+  font-family: "Roboto", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+:root {
+  --thin-border: 1px solid #f6cece;
+  --secondary-color: #6fe398;
+  --primary-color: #a5e67a;
+  --ligth-primary-color: #f2feb9;
+  --gray-color: #d8d8d8;
 }
