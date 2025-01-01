@@ -1,6 +1,6 @@
-const LeftArrowIcon = ({ onclick }: { onclick: () => void }) => {
+const LeftArrowIcon = ({ onClick }: { onClick: () => void }) => {
   return (
-    <div onClick={onclick}>
+    <div onClick={onClick}>
       <svg
         width="8"
         height="14"

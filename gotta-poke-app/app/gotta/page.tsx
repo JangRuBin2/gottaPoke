@@ -3,6 +3,9 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { delay } from "../_utils/delay";
+import GottaIcon from "../_utils/icons/GottaIcon";
+import HomeIcon from "../_utils/icons/HomeIcon";
+import SaveIcon from "../_utils/icons/SaveIcon";
 import Spinner from "../_utils/icons/Spinner";
 import styles from "./GottaPokePage.module.css";
 import PoketmonCard from "./_components/PoketmonCard";
@@ -69,19 +72,21 @@ const GottaPokePage = () => {
       </div>
       <div className={styles.handler}>
         <button className={styles.gotta} onClick={getPoke}>
-          {"뽑기"}
+          <GottaIcon />
         </button>
         <div className={styles.save}>
           {cardInfo?.length ? (
             <>
               <button onClick={handleSave} disabled={!seqnos.length}>
-                {"저장"}
+                <SaveIcon />
               </button>
             </>
           ) : (
             <Spinner loading={!!cardInfo?.length} />
           )}
-          <button onClick={() => router.push("/")}>{"메인 화면으로"}</button>
+          <button onClick={() => router.push("/")}>
+            <HomeIcon />
+          </button>
         </div>
       </div>
     </div>
