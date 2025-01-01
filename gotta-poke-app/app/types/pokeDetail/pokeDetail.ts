@@ -19,6 +19,7 @@ type Language = {
   name: string;
   url: string;
 };
-type FlavorText = {
+export type FlavorText = {
   flavor_text: string;
+  language: Language;
 };

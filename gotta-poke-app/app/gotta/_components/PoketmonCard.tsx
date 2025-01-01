@@ -64,7 +64,10 @@ const PoketmonCard = ({
         <div></div>
       )}
       {isDetailOpen && detailPokeInfo && (
-        <PokeDetailInfo pokeDetailInfo={detailPokeInfo} />
+        <PokeDetailInfo
+          pokeDetailInfo={detailPokeInfo}
+          setIsDetailOpen={setIsDetailOpen}
+        />
       )}
     </div>
   );

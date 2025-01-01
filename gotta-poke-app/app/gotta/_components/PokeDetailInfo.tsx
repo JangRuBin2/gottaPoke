@@ -1,11 +1,19 @@
 "use client";
-import { Genera, Names, PokeDetail } from "@/app/types/pokeDetail/pokeDetail";
-import { useState } from "react";
+import ExitIcon from "@/app/_utils/icons/ExitIcon";
+import {
+  FlavorText,
+  Genera,
+  Names,
+  PokeDetail,
+} from "@/app/types/pokeDetail/pokeDetail";
+import { Dispatch, SetStateAction, useState } from "react";
 import styles from "./PokeDetailInfo.module.css";
 const PokeDetailInfo = ({
   pokeDetailInfo: poke,
+  setIsDetailOpen,
 }: {
   pokeDetailInfo: PokeDetail;
+  setIsDetailOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
   const [showInfo, isShowInfo] = useState<boolean>(false);
   return (
@@ -13,26 +21,29 @@ const PokeDetailInfo = ({
       <div className={styles.title}>
         <span>{getKoreanInfo(poke.genera)}</span>
         <h4>{getKoreanName(poke.names)}</h4>
-        <span>{"X"}</span>
+        <ExitIcon onClick={() => setIsDetailOpen(false)} />
       </div>
       {showInfo && (
         <div className={styles.info}>
-          {poke.flavor_text_entries.map((ent, idx) => (
-            <span key={idx}>{ent.flavor_text}</span>
-          ))}
+          <span>{getKoeanFlavor(poke.flavor_text_entries)}</span>
         </div>
       )}
     </div>
   );
 };
-const getKoreanInfo = (genera: Genera[]) => {
-  const result = genera.find((ge) => ge.language.name === "ko");
+const getKoreanInfo = (data: Genera[]) => {
+  const result = data.find((d) => d.language.name === "ko");
   if (!result) return "";
   return result.genus;
 };
-const getKoreanName = (names: Names[]) => {
-  const result = names.find((na) => na.language.name === "ko");
+const getKoreanName = (data: Names[]) => {
+  const result = data.find((d) => d.language.name === "ko");
   if (!result) return "";
   return result.name;
+};
+const getKoeanFlavor = (data: FlavorText[]) => {
+  const result = data.find((d) => d.language.name === "ko");
+  if (!result) return "";
+  return result.flavor_text;
 };
 export default PokeDetailInfo;
