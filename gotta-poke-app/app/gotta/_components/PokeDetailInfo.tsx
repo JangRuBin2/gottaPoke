@@ -36,17 +36,24 @@ const PokeDetailInfo = ({
   );
 };
 const getKoreanInfo = (data: Genera[]) => {
-  const result = data.find((d) => d.language.name === "ko" || "en");
+  const result = data.find(
+    (d) => d.language.name === "ko" || d.language.name === "en"
+  );
+  console.log(result);
   if (!result) return "";
   return result.genus;
 };
 const getKoreanName = (data: Names[]) => {
-  const result = data.find((d) => d.language.name === "ko" || "en");
+  const result = data.find(
+    (d) => d.language.name === "ko" || d.language.name === "en"
+  );
   if (!result) return "";
   return result.name;
 };
 const getKoeanFlavor = (data: FlavorText[]) => {
-  const result = data.find((d) => d.language.name === "ko" || "en");
+  const result = data.find(
+    (d) => d.language.name === "ko" || d.language.name === "en"
+  );
   if (!result) return "";
   return result.flavor_text;
 };
