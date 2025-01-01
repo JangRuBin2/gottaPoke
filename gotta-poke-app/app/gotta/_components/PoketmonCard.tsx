@@ -87,7 +87,8 @@ const PoketmonCard = ({
               <Image
                 src={
                   seqnos.includes(poke.id)
-                    ? poke.sprites.other.showdown.front_shiny
+                    ? poke.sprites.other.showdown.front_shiny ||
+                      poke.sprites.front_shiny
                     : poke.sprites.other.showdown.front_default ||
                       poke.sprites.front_default
                 }
