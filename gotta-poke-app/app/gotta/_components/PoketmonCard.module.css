@@ -44,9 +44,5 @@
   }
 }
 .disabled {
-  background-image: url("@/app/_utils/images/pocketmonBack.png");
   background-color: var(--secondary-color);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
