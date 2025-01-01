@@ -7,6 +7,7 @@ import { delay } from "../_utils/delay";
 import GottaIcon from "../_utils/icons/GottaIcon";
 import HomeIcon from "../_utils/icons/HomeIcon";
 import SaveIcon from "../_utils/icons/SaveIcon";
+import SoundHandleIcon from "../_utils/icons/SoundHandleIcon";
 import Spinner from "../_utils/icons/Spinner";
 import styles from "./GottaPokePage.module.css";
 import PoketmonCard from "./_components/PoketmonCard";
@@ -17,7 +18,8 @@ const GottaPokePage = () => {
   const router = useRouter();
   const [cardInfo, setCardInfo] = useState<PoketmonInfo[]>();
   const [seqnos, setSeqnos] = useState<number[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [soundOn, setSoundOn] = useState<boolean>(false);
   const getPoke = async () => {
     try {
       setLoading(true);
@@ -64,6 +66,7 @@ const GottaPokePage = () => {
           cardInfo?.map((card, idx) => (
             <PoketmonCard
               key={idx}
+              soundOn={soundOn}
               poketmonInfo={card}
               seqnos={seqnos}
               setSeqnos={setSeqnos}
@@ -87,6 +90,9 @@ const GottaPokePage = () => {
           )}
           <button onClick={() => router.push("/")}>
             <HomeIcon />
+          </button>
+          <button>
+            <SoundHandleIcon soundOn={soundOn} setSoundOn={setSoundOn} />
           </button>
         </div>
       </div>

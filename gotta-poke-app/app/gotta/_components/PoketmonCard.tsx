@@ -10,10 +10,12 @@ const PoketmonCard = ({
   poketmonInfo: poke,
   seqnos,
   setSeqnos,
+  soundOn,
 }: {
   poketmonInfo: PoketmonInfo;
   seqnos: number[];
   setSeqnos: Dispatch<SetStateAction<number[]>>;
+  soundOn: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isDetailOpen, setIsDetailOpen] = useState<boolean>(false);
@@ -61,12 +63,14 @@ const PoketmonCard = ({
             className={styles.container}
             onClick={() => getPokeDetailInfo(poke.id)}
           >
-            <audio ref={audioRef} controls>
-              <source
-                src={poke.cries.legacy || poke.cries.latest}
-                type="audio/ogg"
-              />
-            </audio>
+            {soundOn && (
+              <audio ref={audioRef} controls>
+                <source
+                  src={poke.cries.legacy || poke.cries.latest}
+                  type="audio/ogg"
+                />
+              </audio>
+            )}
             <span>
               <Image
                 src={
