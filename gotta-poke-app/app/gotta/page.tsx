@@ -21,7 +21,7 @@ const GottaPokePage = () => {
       setSeqnos([]);
       await delay(300);
       const result: PoketmonInfo[] = [];
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 6; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${getRandomNumber()}`;
         const response = await fetch(url);
         const data = await response.json();

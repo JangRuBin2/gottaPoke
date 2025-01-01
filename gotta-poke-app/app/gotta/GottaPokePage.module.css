@@ -1,11 +1,10 @@
 .contents {
   display: flex;
   flex-direction: column;
-  height: auto;
+  min-height: 500px;
   align-items: center;
   width: 100%;
   gap: 10px;
-  overflow-y: auto;
   scrollbar-width: thin;
 }
 
@@ -16,18 +15,25 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 10%;
 }
 
 .contentBox {
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 20px;
+  padding-bottom: 120px; /* handler 높이만큼 여백 추가 */
   align-items: center;
   min-height: 500px;
   gap: 8px;
+  box-sizing: border-box; /* padding이 height에 포함되도록 설정 */
 }
+
 .handler {
+  padding: 10px;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,32 +42,35 @@
   bottom: 0;
   left: 0;
   z-index: 20;
-  .gotta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: larger;
-    background-color: var(--secondary-color);
-    width: 100px;
-    height: 40px;
-    border: 1px solid var(--gray-color);
-  }
-  .save {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    padding: 20px;
-    align-items: center;
-    justify-content: center;
-    & > button {
-      display: inline-flex; /* 내부 콘텐츠를 정렬하기 위해 flex 사용 */
-      align-items: center; /* 수직 정렬 */
-      justify-content: center;
-      font-size: larger;
-      background-color: var(--secondary-color);
-      border: 1px solid var(--gray-color);
-      width: 200px;
-      height: 40px;
-    }
-  }
+  height: 100px; /* handler의 높이 지정 */
+}
+
+.handler .gotta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  background-color: var(--secondary-color);
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--gray-color);
+}
+
+.handler .save {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.handler .save > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--gray-color);
+  width: 200px;
 }
