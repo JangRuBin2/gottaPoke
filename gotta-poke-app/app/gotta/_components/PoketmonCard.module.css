@@ -1,0 +1,36 @@
+.cardContainer {
+  width: 100px;
+  height: 250px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  > .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    & > span {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      justify-content: center;
+      & > img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+.disabled {
+  background-color: rgb(37, 42, 48);
+}
