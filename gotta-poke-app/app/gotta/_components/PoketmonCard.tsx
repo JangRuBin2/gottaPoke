@@ -44,7 +44,7 @@ const PoketmonCard = ({
   };
 
   const handlePlay = () => {
-    audioRef.current?.play();
+    if (!seqnos.includes(poke.id)) audioRef.current?.play();
   };
 
   return (
