@@ -2,6 +2,7 @@ import mainImage from "@/app/_utils/images/pngwing.png";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./mainPage.module.css";
+
 const MainPage = () => {
   return (
     <>
