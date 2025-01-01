@@ -9,3 +9,10 @@ body {
   height: 100vh;
   background-color: #f5ecce;
 }
+
+:root {
+  --thin-border: 1px solid #f6cece;
+  --secondary-color: #f6d8ce;
+  --primary-color: #f3e2a9;
+  --gray-color: #d8d8d8;
+}
