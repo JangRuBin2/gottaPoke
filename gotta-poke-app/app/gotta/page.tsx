@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { CN } from "../_utils/CN";
 import { delay } from "../_utils/delay";
 import GottaIcon from "../_utils/icons/GottaIcon";
 import HomeIcon from "../_utils/icons/HomeIcon";
@@ -52,7 +53,7 @@ const GottaPokePage = () => {
     console.log(seqnos);
   };
   return (
-    <div className={styles.contents}>
+    <div className={CN([styles.contents, loading ? styles.loading : ""])}>
       <div className={styles.title}>
         <h1>{"포켓몬 자판기"}</h1>
       </div>
