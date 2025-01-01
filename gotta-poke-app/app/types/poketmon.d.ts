@@ -8,6 +8,13 @@ declare global {
     back_shiny: string;
     front_default: string;
     front_shiny: string;
+    other: {
+      showdown: ShowDown;
+    };
+  };
+  type ShowDown = {
+    back_default: string;
+    front_default: string;
   };
   type PoketmonInfo = {
     // 울음소리
