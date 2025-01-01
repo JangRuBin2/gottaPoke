@@ -14,6 +14,7 @@ const PoketmonCard = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isDetailOpen, setIsDetailOpen] = useState<boolean>(false);
   const [detailPokeInfo, setIsDetailPokeInfo] = useState<PokeDetail>();
+  const [seqnos, setSeqnos] = useState<number[]>([]);
   const handleOpen = () => {
     setIsOpen(true);
   };
@@ -31,6 +32,18 @@ const PoketmonCard = ({
     } catch (error) {
       console.log(error);
     }
+  };
+  const handleCheck = (id: number) => {
+    setSeqnos((p) =>
+      p.includes(id) ? p.filter((e) => e !== id && e !== -1) : [...p, id]
+    );
+  };
+  const isGetPokeDetailInfo = (data: any): data is PokeDetail => {
+    return (
+      typeof data === "object" &&
+      Array.isArray(data.flavor_text_entries) &&
+      typeof data.id === "number"
+    );
   };
   return (
     <div
@@ -59,6 +72,13 @@ const PoketmonCard = ({
               ></Image>
             </span>
           </div>
+          <div>
+            <input
+              type="checkbox"
+              checked={seqnos.includes(poke.id)}
+              onChange={() => handleCheck(poke.id)}
+            />
+          </div>
         </>
       ) : (
         <div></div>
@@ -72,11 +92,5 @@ const PoketmonCard = ({
     </div>
   );
 };
-const isGetPokeDetailInfo = (data: any): data is PokeDetail => {
-  return (
-    typeof data === "object" &&
-    Array.isArray(data.flavor_text_entries) &&
-    typeof data.id === "number"
-  );
-};
+
 export default PoketmonCard;
