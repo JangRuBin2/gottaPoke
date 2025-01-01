@@ -15,9 +15,9 @@ const PokeDetailInfo = ({
   pokeDetailInfo: PokeDetail;
   setIsDetailOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
-  const [showInfo, isShowInfo] = useState<boolean>(false);
+  const [showInfo, setShowInfo] = useState<boolean>(false);
   return (
-    <div className={styles.wrapper} onClick={() => isShowInfo((p) => !p)}>
+    <div className={styles.wrapper} onClick={() => setShowInfo((p) => !p)}>
       <div className={styles.container}>
         <div className={styles.title}>
           <div className={styles.name}>
