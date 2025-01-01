@@ -1,18 +1,21 @@
-"use client";
-import { useRouter } from "next/navigation";
-
-const page = () => {
-  const router = useRouter();
+import mainImage from "@/app/_utils/images/pngwing.png";
+import Image from "next/image";
+import styles from "./mainPage.module.css";
+const MainPage = () => {
   return (
     <>
-      <div>
-        <h1>{"하이"}</h1>
-        <button onClick={() => router.push("/gotta")}>
-          {"포켓몬 뽑으러 가기"}
-        </button>
+      <div className={styles.container}>
+        <span>
+          <Image
+            src={mainImage}
+            fill
+            alt={"gottaPoke_mainImage"}
+            style={{ objectFit: "contain" }}
+          />
+        </span>
       </div>
     </>
   );
 };
 
-export default page;
+export default MainPage;

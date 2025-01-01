@@ -79,7 +79,7 @@ const PoketmonCard = ({
                 sizes={"96px"}
                 alt={`gottaPoke_${poke.name}`}
                 style={{ objectFit: "contain" }}
-              ></Image>
+              />
             </span>
           </div>
           <div className={styles.checkBox}>

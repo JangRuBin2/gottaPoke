@@ -7,12 +7,13 @@ html,
 body {
   width: 100vw;
   height: 100vh;
-  background-color: #f5ecce;
+  background-color: var(--ligth-primary-color);
 }
 
 :root {
   --thin-border: 1px solid #f6cece;
-  --secondary-color: #f6d8ce;
-  --primary-color: #f3e2a9;
+  --secondary-color: #6fe398;
+  --primary-color: #a5e67a;
+  --ligth-primary-color: #f2feb9;
   --gray-color: #d8d8d8;
 }
