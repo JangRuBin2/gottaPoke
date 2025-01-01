@@ -17,6 +17,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    & > audio {
+      display: none;
+    }
     & > span {
       width: 150px;
       height: 150px;

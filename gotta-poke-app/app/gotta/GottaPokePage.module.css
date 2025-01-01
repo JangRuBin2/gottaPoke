@@ -4,6 +4,9 @@
   height: auto;
   align-items: center;
   width: 100%;
+  gap: 10px;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .title {
@@ -23,9 +26,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 20px;
 }
 
 .save {
-  width: 200px;
-  height: 40px;
+  padding: 20px;
+  & > button {
+    width: 200px;
+    height: 40px;
+  }
 }

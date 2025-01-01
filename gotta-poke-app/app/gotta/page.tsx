@@ -14,6 +14,7 @@ const GottaPokePage = () => {
   const getPoke = async () => {
     try {
       setCardInfo([]);
+      setSeqnos([]);
       await delay(300);
       const result: PoketmonInfo[] = [];
       for (let i = 0; i < 6; i++) {
@@ -61,15 +62,13 @@ const GottaPokePage = () => {
           </>
         )}
       </div>
-      {cardInfo?.length && (
-        <button
-          className={styles.save}
-          onClick={handleSave}
-          disabled={!seqnos.length}
-        >
-          {"저장"}
-        </button>
-      )}
+      <div className={styles.save}>
+        {cardInfo?.length && (
+          <button onClick={handleSave} disabled={!seqnos.length}>
+            {"저장"}
+          </button>
+        )}
+      </div>
     </div>
   );
 };
