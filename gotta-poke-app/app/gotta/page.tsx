@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { CN } from "../_utils/CN";
 import { delay } from "../_utils/delay";
-import GottaIcon from "../_utils/icons/GottaIcon";
 import HomeIcon from "../_utils/icons/HomeIcon";
 import SaveIcon from "../_utils/icons/SaveIcon";
 import SoundHandleIcon from "../_utils/icons/SoundHandleIcon";
@@ -76,7 +75,8 @@ const GottaPokePage = () => {
       </div>
       <div className={styles.handler}>
         <button className={styles.gotta} onClick={getPoke}>
-          <GottaIcon />
+          {"뽑기"}
+          {/* <GottaIcon /> */}
         </button>
         <div className={styles.save}>
           {cardInfo?.length ? (
