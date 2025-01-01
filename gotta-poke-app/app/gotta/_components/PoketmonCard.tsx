@@ -53,12 +53,16 @@ const PoketmonCard = ({
 
   return (
     <div
-      style={{
-        backgroundImage: `url(${backImage.src || backImage})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      }}
+      style={
+        !isOpen
+          ? {
+              backgroundImage: `url(${backImage.src || backImage})`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+            }
+          : undefined
+      }
       className={CN([styles.cardContainer, !isOpen ? styles.disabled : ""])}
       onClick={handleOpen}
     >
