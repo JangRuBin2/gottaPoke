@@ -3,7 +3,7 @@
   border-bottom: 1px solid;
 }
 .cardContainer {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   width: 150px;
   height: 240px;
   border: var(--thin-border);
@@ -44,9 +44,5 @@
   }
 }
 .disabled {
-  background-image: url("@/app/_utils/images/pocketmonBack.png");
   background-color: var(--secondary-color);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
