@@ -1,6 +1,7 @@
 "use client";
 
 import { CN } from "@/app/_utils/CN";
+import backImage from "@/app/_utils/images/pocketmonBack.png";
 import { PokeDetail } from "@/app/types/pokeDetail/pokeDetail";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useRef, useState } from "react";
@@ -52,6 +53,16 @@ const PoketmonCard = ({
 
   return (
     <div
+      style={
+        !isOpen
+          ? {
+              backgroundImage: `url(${backImage.src || backImage})`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+            }
+          : undefined
+      }
       className={CN([styles.cardContainer, !isOpen ? styles.disabled : ""])}
       onClick={handleOpen}
     >
@@ -76,7 +87,8 @@ const PoketmonCard = ({
               <Image
                 src={
                   seqnos.includes(poke.id)
-                    ? poke.sprites.other.showdown.front_shiny
+                    ? poke.sprites.other.showdown.front_shiny ||
+                      poke.sprites.front_shiny
                     : poke.sprites.other.showdown.front_default ||
                       poke.sprites.front_default
                 }
