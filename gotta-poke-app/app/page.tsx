@@ -13,6 +13,7 @@ const MainPage = () => {
             style={{ objectFit: "contain" }}
           />
         </span>
+        <p>{"시작하려면 화면을 눌러주세요."}</p>
       </div>
     </>
   );
