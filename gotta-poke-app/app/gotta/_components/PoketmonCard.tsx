@@ -3,18 +3,21 @@
 import { CN } from "@/app/_utils/CN";
 import { PokeDetail } from "@/app/types/pokeDetail/pokeDetail";
 import Image from "next/image";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import PokeDetailInfo from "./PokeDetailInfo";
 import styles from "./PoketmonCard.module.css";
 const PoketmonCard = ({
   poketmonInfo: poke,
+  seqnos,
+  setSeqnos,
 }: {
   poketmonInfo: PoketmonInfo;
+  seqnos: number[];
+  setSeqnos: Dispatch<SetStateAction<number[]>>;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isDetailOpen, setIsDetailOpen] = useState<boolean>(false);
   const [detailPokeInfo, setIsDetailPokeInfo] = useState<PokeDetail>();
-  const [seqnos, setSeqnos] = useState<number[]>([]);
   const handleOpen = () => {
     setIsOpen(true);
   };

@@ -9,6 +9,7 @@ const isGetPokeResponse = (data: any): data is PoketmonInfo => {
 };
 const GottaPokePage = () => {
   const [cardInfo, setCardInfo] = useState<PoketmonInfo[]>();
+  const [seqnos, setSeqnos] = useState<number[]>([]);
 
   const getPoke = async () => {
     try {
@@ -37,6 +38,9 @@ const GottaPokePage = () => {
       console.log(error);
     }
   };
+  const handleSave = () => {
+    console.log(seqnos);
+  };
   return (
     <div className={styles.contents}>
       <div className={styles.title}>
@@ -47,11 +51,25 @@ const GottaPokePage = () => {
         {cardInfo?.length && (
           <>
             {cardInfo.map((card, idx) => (
-              <PoketmonCard key={idx} poketmonInfo={card}></PoketmonCard>
+              <PoketmonCard
+                key={idx}
+                poketmonInfo={card}
+                seqnos={seqnos}
+                setSeqnos={setSeqnos}
+              ></PoketmonCard>
             ))}
           </>
         )}
       </div>
+      {cardInfo?.length && (
+        <button
+          className={styles.save}
+          onClick={handleSave}
+          disabled={!seqnos.length}
+        >
+          {"저장"}
+        </button>
+      )}
     </div>
   );
 };

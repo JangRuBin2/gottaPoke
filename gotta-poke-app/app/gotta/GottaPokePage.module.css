@@ -5,6 +5,7 @@
   align-items: center;
   width: 100%;
 }
+
 .title {
   padding: 20px;
   display: flex;
@@ -17,8 +18,14 @@
     height: 40px;
   }
 }
+
 .contentBox {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.save {
+  width: 200px;
+  height: 40px;
 }
