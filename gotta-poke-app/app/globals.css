@@ -6,6 +6,7 @@
 
 html,
 body {
+  font-family: sans-serif;
   width: 100vw;
   height: 100vh;
   background-color: var(--ligth-primary-color);

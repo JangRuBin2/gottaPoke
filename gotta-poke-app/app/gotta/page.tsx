@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { delay } from "../_utils/delay";
 import Spinner from "../_utils/icons/Spinner";
@@ -9,6 +10,7 @@ const isGetPokeResponse = (data: any): data is PoketmonInfo => {
   return typeof data === "object" && typeof data.id === "number";
 };
 const GottaPokePage = () => {
+  const router = useRouter();
   const [cardInfo, setCardInfo] = useState<PoketmonInfo[]>();
   const [seqnos, setSeqnos] = useState<number[]>([]);
   const [loading, setLoading] = useState(false);
@@ -49,8 +51,7 @@ const GottaPokePage = () => {
   return (
     <div className={styles.contents}>
       <div className={styles.title}>
-        <h3>{"포켓몬 자판기"}</h3>
-        <button onClick={getPoke}>{"뽑기"}</button>
+        <h1>{"포켓몬 자판기"}</h1>
       </div>
       <div className={styles.contentBox}>
         {loading ? (
@@ -66,14 +67,22 @@ const GottaPokePage = () => {
           ))
         )}
       </div>
-      <div className={styles.save}>
-        {cardInfo?.length ? (
-          <button onClick={handleSave} disabled={!seqnos.length}>
-            {"저장"}
-          </button>
-        ) : (
-          <Spinner loading={!!cardInfo?.length} />
-        )}
+      <div className={styles.handler}>
+        <button className={styles.gotta} onClick={getPoke}>
+          {"뽑기"}
+        </button>
+        <div className={styles.save}>
+          {cardInfo?.length ? (
+            <>
+              <button onClick={handleSave} disabled={!seqnos.length}>
+                {"저장"}
+              </button>
+            </>
+          ) : (
+            <Spinner loading={!!cardInfo?.length} />
+          )}
+          <button onClick={() => router.push("/")}>{"메인 화면으로"}</button>
+        </div>
       </div>
     </div>
   );

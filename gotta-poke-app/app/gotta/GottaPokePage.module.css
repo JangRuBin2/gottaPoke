@@ -16,12 +16,6 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  & > button {
-    background-color: var(--secondary-color);
-    width: 100px;
-    height: 40px;
-    border: 1px solid var(--gray-color);
-  }
 }
 
 .contentBox {
@@ -30,15 +24,44 @@
   justify-content: center;
   padding: 20px;
   align-items: center;
-  min-height: 540px;
+  min-height: 500px;
+  gap: 8px;
 }
-
-.save {
-  padding: 20px;
-  & > button {
+.handler {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  .gotta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
     background-color: var(--secondary-color);
-    border: 1px solid var(--gray-color);
-    width: 200px;
+    width: 100px;
     height: 40px;
+    border: 1px solid var(--gray-color);
+  }
+  .save {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    & > button {
+      display: inline-flex; /* 내부 콘텐츠를 정렬하기 위해 flex 사용 */
+      align-items: center; /* 수직 정렬 */
+      justify-content: center;
+      font-size: larger;
+      background-color: var(--secondary-color);
+      border: 1px solid var(--gray-color);
+      width: 200px;
+      height: 40px;
+    }
   }
 }

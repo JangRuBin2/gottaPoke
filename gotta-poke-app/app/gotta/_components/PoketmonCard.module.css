@@ -3,7 +3,7 @@
 }
 .cardContainer {
   width: 150px;
-  height: 250px;
+  height: 240px;
   border: var(--thin-border);
   background-color: #fbfbef;
   border-radius: 8px;
