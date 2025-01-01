@@ -27,6 +27,8 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: 20px;
+  align-items: center;
+  min-height: 540px;
 }
 
 .save {

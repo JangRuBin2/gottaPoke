@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { delay } from "../_utils/delay";
+import Spinner from "../_utils/icons/Spinner";
 import styles from "./GottaPokePage.module.css";
 import PoketmonCard from "./_components/PoketmonCard";
 const isGetPokeResponse = (data: any): data is PoketmonInfo => {
@@ -10,14 +11,15 @@ const isGetPokeResponse = (data: any): data is PoketmonInfo => {
 const GottaPokePage = () => {
   const [cardInfo, setCardInfo] = useState<PoketmonInfo[]>();
   const [seqnos, setSeqnos] = useState<number[]>([]);
-
+  const [loading, setLoading] = useState(false);
   const getPoke = async () => {
     try {
+      setLoading(true);
       setCardInfo([]);
       setSeqnos([]);
       await delay(300);
       const result: PoketmonInfo[] = [];
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 4; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${getRandomNumber()}`;
         const response = await fetch(url);
         const data = await response.json();
@@ -37,6 +39,8 @@ const GottaPokePage = () => {
           : "포켓몬 데이터를 가져오는데 실패했습니다."
       );
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
   const handleSave = () => {
@@ -49,24 +53,26 @@ const GottaPokePage = () => {
         <button onClick={getPoke}>{"뽑기"}</button>
       </div>
       <div className={styles.contentBox}>
-        {cardInfo?.length && (
-          <>
-            {cardInfo.map((card, idx) => (
-              <PoketmonCard
-                key={idx}
-                poketmonInfo={card}
-                seqnos={seqnos}
-                setSeqnos={setSeqnos}
-              ></PoketmonCard>
-            ))}
-          </>
+        {loading ? (
+          <Spinner loading={loading} />
+        ) : (
+          cardInfo?.map((card, idx) => (
+            <PoketmonCard
+              key={idx}
+              poketmonInfo={card}
+              seqnos={seqnos}
+              setSeqnos={setSeqnos}
+            />
+          ))
         )}
       </div>
       <div className={styles.save}>
-        {cardInfo?.length && (
+        {cardInfo?.length ? (
           <button onClick={handleSave} disabled={!seqnos.length}>
             {"저장"}
           </button>
+        ) : (
+          <Spinner loading={!!cardInfo?.length} />
         )}
       </div>
     </div>

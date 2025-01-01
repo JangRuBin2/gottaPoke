@@ -82,7 +82,7 @@ const PoketmonCard = ({
               ></Image>
             </span>
           </div>
-          <div>
+          <div className={styles.checkBox}>
             <input
               type="checkbox"
               checked={seqnos.includes(poke.id)}
