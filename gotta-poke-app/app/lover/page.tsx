@@ -12,7 +12,7 @@ const LoverPage = () => {
   const getAnswer = () => {
     if (inputValue !== answer) return alert("잘못된 접근입니다.");
     alert("호정아 생일축하해~ 사랑해");
-    router.push("/gotta?love=forever");
+    router.push(`/lover/${"forever"}`);
   };
   return (
     <div className={styles.container}>
