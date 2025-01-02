@@ -63,7 +63,7 @@ const PoketmonCard = ({
             }
           : undefined
       }
-      className={CN([styles.cardContainer, !isOpen ? styles.disabled : ""])}
+      className={CN([styles.cardContainer, !isOpen ? styles.cardBack : ""])}
       onClick={handleOpen}
     >
       {isOpen ? (

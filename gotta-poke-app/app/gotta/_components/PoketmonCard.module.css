@@ -11,12 +11,14 @@
   border-radius: 8px;
   margin: 10px;
   padding: 20px;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
   position: relative;
+  transition: transform 0.6s;
+  transform: perspective(800px) rotateY(0deg);
   > .checkBox {
     z-index: 10;
   }
@@ -43,6 +45,6 @@
     }
   }
 }
-.disabled {
-  background-color: var(--secondary-color);
+.cardBack {
+  transform: perspective(800px) rotateY(180deg);
 }

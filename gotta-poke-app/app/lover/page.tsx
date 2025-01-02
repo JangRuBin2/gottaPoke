@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import LeftArrowIcon from "../_utils/icons/LeftArrowIcon";
 import styles from "./LoverPage.module.css";
 const LoverPage = () => {
   const router = useRouter();
@@ -27,6 +28,10 @@ const LoverPage = () => {
           {"제출"}
         </button>
       </div>
+      <LeftArrowIcon
+        className={styles.goBack}
+        onClick={() => router.push("/")}
+      />
     </div>
   );
 };
