@@ -20,12 +20,6 @@
     margin-top: 10px;
   }
 }
-.lover {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  cursor: pointer;
-}
 @keyframes fadeInOut {
   0%,
   100% {

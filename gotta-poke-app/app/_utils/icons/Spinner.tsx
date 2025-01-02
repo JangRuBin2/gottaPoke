@@ -1,3 +1,4 @@
+"use client";
 import { BounceLoader } from "react-spinners";
 
 const Spinner = ({ loading }: { loading: boolean }) => {
