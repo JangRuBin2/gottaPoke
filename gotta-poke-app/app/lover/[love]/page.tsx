@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import styles from "./LoverPage.module.css";
-const LoverPage = async ({ params }: { params: { love: string } }) => {
-  const love = params.love;
+const LoverPage = async ({ params }: { params?: { love?: string } }) => {
+  const { love } = params;
   if (!love) redirect("/");
   return (
     <div className={styles.container}>
@@ -20,5 +20,5 @@ const LoverPage = async ({ params }: { params: { love: string } }) => {
     </div>
   );
 };
-
+export const dynamic = "force-dynamic";
 export default LoverPage;

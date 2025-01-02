@@ -1,9 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { CN } from "../_utils/CN";
 import { delay } from "../_utils/delay";
+import GottaIcon from "../_utils/icons/GottaIcon";
 import HomeIcon from "../_utils/icons/HomeIcon";
 import SaveIcon from "../_utils/icons/SaveIcon";
 import SoundHandleIcon from "../_utils/icons/SoundHandleIcon";
@@ -15,19 +16,24 @@ const isGetPokeResponse = (data: any): data is PoketmonInfo => {
 };
 const GottaPokePage = () => {
   const router = useRouter();
+  const params = useSearchParams();
+  const isLove = params.get("love");
   const [cardInfo, setCardInfo] = useState<PoketmonInfo[]>();
   const [seqnos, setSeqnos] = useState<number[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [soundOn, setSoundOn] = useState<boolean>(false);
-  const getPoke = async () => {
+  const getPoke = async ({ isLove }: { isLove?: string }) => {
     try {
+      const legendMode = isLove === "forever";
       setLoading(true);
       setCardInfo([]);
       setSeqnos([]);
       await delay(300);
       const result: PoketmonInfo[] = [];
       for (let i = 0; i < 6; i++) {
-        const url = `https://pokeapi.co/api/v2/pokemon/${getRandomNumber()}`;
+        const url = `https://pokeapi.co/api/v2/pokemon/${
+          legendMode ? getLegend() : getRandomNumber()
+        }`;
         const response = await fetch(url);
         const data = await response.json();
         if (!response.ok)
@@ -51,7 +57,9 @@ const GottaPokePage = () => {
     }
   };
   const handleSave = () => {
+    if (!seqnos.length) return alert("저장할 포켓몬을 선택해주세요");
     console.log(seqnos);
+    alert("준비중입니다!");
   };
   return (
     <div className={CN([styles.contents, loading ? styles.loading : ""])}>
@@ -74,10 +82,19 @@ const GottaPokePage = () => {
         )}
       </div>
       <div className={styles.handler}>
-        <button className={styles.gotta} onClick={getPoke}>
-          {"뽑기"}
-          {/* <GottaIcon /> */}
-        </button>
+        <div className={styles.getCard}>
+          <button
+            className={CN([styles.gotta, !isLove ? styles.onlyGotta : ""])}
+            onClick={() => getPoke({})}
+          >
+            {"뽑기"}
+          </button>
+          {isLove && (
+            <button onClick={() => getPoke({ isLove })}>
+              <GottaIcon />
+            </button>
+          )}
+        </div>
         <div className={styles.save}>
           {cardInfo?.length ? (
             <>
@@ -98,6 +115,15 @@ const GottaPokePage = () => {
       </div>
     </div>
   );
+};
+const getLegend = () => {
+  const legendArray: number[] = [
+    6, 9, 37, 38, 58, 25, 133, 104, 105, 132, 134, 135, 136, 144, 149, 150, 151,
+    147, 148, 149, 172, 196, 197, 216, 258, 393, 394, 395, 470, 471, 501, 502,
+    700, 778,
+  ];
+  const randomIndex = Math.floor(Math.random() * legendArray.length);
+  return legendArray[randomIndex];
 };
 const getRandomNumber = () => Math.floor(Math.random() * 1025) + 1;
 export default GottaPokePage;

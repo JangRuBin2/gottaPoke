@@ -50,19 +50,30 @@
   z-index: 20;
   height: 100px; /* handler의 높이 지정 */
 }
-
-.handler .gotta {
+.getCard {
   display: inline-flex;
-  align-items: center;
+  width: 100%;
+  gap: 10px;
   justify-content: center;
-  font-size: larger;
-  color: white;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  background-color: #324348;
+  & > button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #324348;
+    border: 1px solid var(--gray-color);
+    border-radius: 5px;
+    width: 100px;
+    & > svg {
+      fill: white;
+    }
+  }
+}
+
+.onlyGotta {
   width: 320px;
-  height: 100px;
-  border: 1px solid var(--gray-color);
-  border-radius: 5px;
 }
 
 .handler .save {
