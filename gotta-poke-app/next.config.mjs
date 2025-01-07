@@ -1,9 +1,14 @@
-export default {
-  experimental: {
-    appDir: true,
-  },
+const nextConfig = {
   images: {
-    domains: ["raw.githubusercontent.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        pathname: "/PokeAPI/sprites/master/sprites/pokemon/other/showdown/**",
+      },
+    ],
   },
-  reactStrictMode: true,
+  experimental: {},
 };
+
+export default nextConfig;

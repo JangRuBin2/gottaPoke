@@ -92,6 +92,7 @@ const PoketmonCard = ({
                     : poke.sprites.other.showdown.front_default ||
                       poke.sprites.front_default
                 }
+                unoptimized
                 fill
                 sizes={"96px"}
                 alt={`gottaPoke_${poke.name}`}
