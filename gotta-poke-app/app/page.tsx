@@ -1,10 +1,12 @@
 import mainImage from "@/app/_utils/images/pngwing.png";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import LoverIcon from "./_utils/icons/LoverIcon";
 import styles from "./mainPage.module.css";
 
 const MainPage = () => {
+  redirect("/login");
   return (
     <>
       <div className={styles.container}>
