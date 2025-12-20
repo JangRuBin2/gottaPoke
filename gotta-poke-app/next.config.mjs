@@ -1,6 +1,5 @@
 const nextConfig = {
   output: "export",
-  basePath: "/gottaPoke",
   images: {
     unoptimized: true,
     remotePatterns: [
