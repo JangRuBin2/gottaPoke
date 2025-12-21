@@ -27,15 +27,19 @@ jobs:
           node-version: "20"
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd gotta-poke-app
+          npm ci
 
       - name: Build with Next.js
-        run: npm run build
+        run: |
+          cd gotta-poke-app
+          npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./gotta-poke-app/out
 
   deploy:
     environment:
