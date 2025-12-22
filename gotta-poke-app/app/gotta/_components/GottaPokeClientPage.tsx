@@ -7,6 +7,7 @@ import SoundHandleIcon from "@/app/_utils/icons/SoundHandleIcon";
 import Spinner from "@/app/_utils/icons/Spinner";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
+import { toast } from "react-toastify";
 import styles from "./GottaPokePage.module.css";
 import PoketmonCard from "./PoketmonCard";
 
@@ -22,7 +23,7 @@ const GottaClientPokePage = () => {
 
   const getPoke = async ({ isLove }: { isLove?: string }) => {
     if (isLoading) {
-      alert("이미 요청을 수행중입니다.");
+      toast.warning("이미 요청을 수행중입니다.");
       return;
     }
     try {
@@ -44,10 +45,10 @@ const GottaClientPokePage = () => {
         result.push(data);
       }
       console.log("result:", result);
-      alert("포켓몬이 왔습니다~");
+      toast.success("포켓몬이 왔습니다~");
       setCardInfo(result);
     } catch (error) {
-      alert(
+      toast.error(
         error instanceof Error
           ? error.message
           : "포켓몬 데이터를 가져오는데 실패했습니다."
@@ -58,8 +59,8 @@ const GottaClientPokePage = () => {
     }
   };
   const handleSave = async () => {
-    if (!seqnos.length) return alert("저장할 포켓몬을 선택해주세요");
-    if (!cardInfo) return alert("포켓몬 정보가 없습니다");
+    if (!seqnos.length) return toast.warning("저장할 포켓몬을 선택해주세요");
+    if (!cardInfo) return toast.error("포켓몬 정보가 없습니다");
 
     try {
       const selectedPokemons = cardInfo
@@ -83,10 +84,10 @@ const GottaClientPokePage = () => {
         throw new Error(data.error || "저장에 실패했습니다");
       }
 
-      alert(`${selectedPokemons.length}개의 포켓몬이 저장되었습니다!`);
+      toast.success(`${selectedPokemons.length}개의 포켓몬이 저장되었습니다!`);
       setSeqnos([]);
     } catch (error) {
-      alert(
+      toast.error(
         error instanceof Error ? error.message : "포켓몬 저장에 실패했습니다."
       );
       console.error(error);

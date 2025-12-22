@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import LeftArrowIcon from "../_utils/icons/LeftArrowIcon";
 import styles from "./LoverPage.module.css";
 const LoverPage = () => {
@@ -11,8 +12,8 @@ const LoverPage = () => {
     setInputValue(val);
   };
   const getAnswer = () => {
-    if (inputValue !== answer) return alert("잘못된 접근입니다.");
-    alert("호정아 생일축하해~ 사랑해");
+    if (inputValue !== answer) return toast.error("잘못된 접근입니다.");
+    toast.success("호정아 생일축하해~ 사랑해");
     router.push(`/lover/${"forever"}`);
   };
   return (

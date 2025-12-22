@@ -1,7 +1,14 @@
-import { NextRequest, NextResponse } from "next/server";
+import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request: NextRequest) => {
+  const session = await getServerSession(authOptions);
+  if (!session || !session.user) {
+    return NextResponse.json({ error: "인증이 필요합니다" }, { status: 401 });
+  }
+
   try {
     const body = await request.json();
     const { pokemons } = body;

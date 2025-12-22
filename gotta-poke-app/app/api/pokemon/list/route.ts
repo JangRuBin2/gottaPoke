@@ -1,7 +1,18 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export const GET = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (!session || !session.user) {
+    return NextResponse.json(
+      { error: "인증이 필요합니다" },
+      { status: 401 }
+    );
+  }
+
   try {
     const pokemons = await prisma.pokemon.findMany({
       orderBy: {

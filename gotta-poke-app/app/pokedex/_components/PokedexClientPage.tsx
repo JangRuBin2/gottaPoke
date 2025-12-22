@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import HomeIcon from "@/app/_utils/icons/HomeIcon";
 import Spinner from "@/app/_utils/icons/Spinner";
 import PokemonCard from "./PokemonCard";
@@ -33,7 +34,7 @@ const PokedexClientPage = () => {
 
       setPokemons(data.data);
     } catch (error) {
-      alert(
+      toast.error(
         error instanceof Error
           ? error.message
           : "포켓몬 조회에 실패했습니다."
