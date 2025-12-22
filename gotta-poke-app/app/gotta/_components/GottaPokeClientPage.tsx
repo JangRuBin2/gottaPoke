@@ -1,6 +1,5 @@
 "use client";
-import { CN } from "@/app/_utils/CN";
-import { delay } from "@/app/_utils/delay";
+import { CN, getLegend, getRandomNumber } from "@/app/_utils";
 import GottaIcon from "@/app/_utils/icons/GottaIcon";
 import HomeIcon from "@/app/_utils/icons/HomeIcon";
 import SaveIcon from "@/app/_utils/icons/SaveIcon";
@@ -11,26 +10,27 @@ import { Suspense, useState } from "react";
 import styles from "./GottaPokePage.module.css";
 import PoketmonCard from "./PoketmonCard";
 
-const isGetPokeResponse = (data: any): data is PoketmonInfo => {
-  return typeof data === "object" && typeof data.id === "number";
-};
 const GottaClientPokePage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
   const isLove = params.get("love");
-  const [cardInfo, setCardInfo] = useState<PoketmonInfo[]>();
+  const [cardInfo, setCardInfo] = useState<Poketmon[]>();
   const [seqnos, setSeqnos] = useState<number[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [soundOn, setSoundOn] = useState<boolean>(false);
+
   const getPoke = async ({ isLove }: { isLove?: string }) => {
+    if (isLoading) {
+      alert("이미 요청을 수행중입니다.");
+      return;
+    }
     try {
       const legendMode = isLove === "forever";
-      setLoading(true);
+      setIsLoading(true);
       setCardInfo([]);
       setSeqnos([]);
-      await delay(300);
-      const result: PoketmonInfo[] = [];
+      const result: Poketmon[] = [];
       for (let i = 0; i < 6; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${
           legendMode ? getLegend() : getRandomNumber()
@@ -54,23 +54,53 @@ const GottaClientPokePage = () => {
       );
       console.log(error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!seqnos.length) return alert("저장할 포켓몬을 선택해주세요");
-    console.log(seqnos);
-    alert("준비중입니다!");
+    if (!cardInfo) return alert("포켓몬 정보가 없습니다");
+
+    try {
+      const selectedPokemons = cardInfo
+        .filter((card) => seqnos.includes(card.id))
+        .map((card) => ({
+          pokemonId: card.id,
+          thumbnailUrl: card.sprites.front_default,
+        }));
+
+      const response = await fetch("/api/pokemon/save", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ pokemons: selectedPokemons }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "저장에 실패했습니다");
+      }
+
+      alert(`${selectedPokemons.length}개의 포켓몬이 저장되었습니다!`);
+      setSeqnos([]);
+    } catch (error) {
+      alert(
+        error instanceof Error ? error.message : "포켓몬 저장에 실패했습니다."
+      );
+      console.error(error);
+    }
   };
   return (
     <Suspense fallback={<Spinner loading={true} />}>
-      <div className={CN([styles.contents, loading ? styles.loading : ""])}>
+      <div className={CN([styles.contents, isLoading ? styles.loading : ""])}>
         <div className={styles.title}>
           <h1>{"포켓몬 자판기"}</h1>
         </div>
         <div className={styles.contentBox}>
-          {loading ? (
-            <Spinner loading={loading} />
+          {isLoading ? (
+            <Spinner loading={isLoading} />
           ) : (
             cardInfo?.map((card, idx) => (
               <PoketmonCard
@@ -119,15 +149,9 @@ const GottaClientPokePage = () => {
     </Suspense>
   );
 };
-const getLegend = () => {
-  const legendArray: number[] = [
-    6, 9, 37, 38, 58, 25, 133, 104, 105, 132, 134, 135, 136, 144, 149, 150, 151,
-    147, 148, 149, 172, 196, 197, 216, 258, 393, 394, 395, 470, 471, 501, 502,
-    700, 778,
-  ];
-  const randomIndex = Math.floor(Math.random() * legendArray.length);
-  return legendArray[randomIndex];
+
+const isGetPokeResponse = (data: any): data is Poketmon => {
+  return typeof data === "object" && typeof data.id === "number";
 };
-const getRandomNumber = () => Math.floor(Math.random() * 1025) + 1;
 
 export default GottaClientPokePage;
