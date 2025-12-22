@@ -3,6 +3,7 @@ declare global {
     latest: string;
     legacy: string;
   };
+
   type Sprites = {
     back_default: string;
     back_shiny: string;
@@ -12,13 +13,14 @@ declare global {
       showdown: ShowDown;
     };
   };
+
   type ShowDown = {
     back_default: string;
     back_shiny: string;
     front_shiny: string;
     front_default: string;
   };
-  type PoketmonInfo = {
+  type Poketmon = {
     // 울음소리
     cries: Cries;
     id: number;

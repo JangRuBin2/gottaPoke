@@ -1,6 +1,6 @@
 "use client";
 
-import { CN } from "@/app/_utils/CN";
+import { CN } from "@/app/_utils";
 import backImage from "@/app/_utils/images/pocketmonBack.png";
 import { PokeDetail } from "@/app/types/pokeDetail/pokeDetail";
 import Image from "next/image";
@@ -13,7 +13,7 @@ const PoketmonCard = ({
   setSeqnos,
   soundOn,
 }: {
-  poketmonInfo: PoketmonInfo;
+  poketmonInfo: Poketmon;
   seqnos: number[];
   setSeqnos: Dispatch<SetStateAction<number[]>>;
   soundOn: boolean;
