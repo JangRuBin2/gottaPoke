@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// 사용자 테이블
+model User {
+  id        String   @id @default(cuid())
+  email     String?  @unique
+  username  String?  @unique
+  password  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  pokemons  Pokemon[]
+  eventLogs EventLog[]
+}
+
+// 수집한 포켓몬 테이블
+model Pokemon {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  pokemonId  Int      // 포켓몬 도감 번호
+  name       String   // 포켓몬 이름
+  imageUrl   String?  // 이미지 URL
+  nickname   String?  // 사용자 지정 별명
+
+  caughtAt   DateTime @default(now())
+
+  @@index([userId])
+  @@index([pokemonId])
+}
+
+// 이벤트 요청 기록 테이블
+model EventLog {
+  id         String   @id @default(cuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  ipAddress  String   // 요청 IP
+  userAgent  String?  // User-Agent header
+  headers    String?  // 전체 헤더 정보 (JSON 문자열)
+
+  eventType  String   // 이벤트 타입 (CATCH_POKEMON, VIEW_POKEMON 등)
+  eventData  String?  // 추가 이벤트 데이터 (JSON 문자열)
+
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([eventType])
+  @@index([createdAt])
+}

@@ -6,10 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@prisma/client": "^7.2.0",
     "next": "^14.2.22",
+    "prisma": "^7.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -18,6 +21,7 @@
     "@types/node": "^20",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "dotenv": "^17.2.3",
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
     "react-spinners": "^0.15.0",

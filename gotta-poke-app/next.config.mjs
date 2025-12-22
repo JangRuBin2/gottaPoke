@@ -1,5 +1,7 @@
 const nextConfig = {
   output: "export",
+  basePath: "/gottaPoke",
+  assetPrefix: "/gottaPoke/",
   images: {
     unoptimized: true,
     remotePatterns: [
