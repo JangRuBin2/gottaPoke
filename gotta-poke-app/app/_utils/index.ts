@@ -16,3 +16,11 @@ export const getLegend = () => {
 };
 
 export const getRandomNumber = () => Math.floor(Math.random() * 1025) + 1;
+
+export const $ERR = (error: any) => {
+  return error instanceof Error
+    ? error.message
+    : typeof error === "string"
+    ? error
+    : "에러가 발생했습니다.";
+};
