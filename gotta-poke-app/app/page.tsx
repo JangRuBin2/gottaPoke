@@ -2,6 +2,7 @@ import mainImage from "@/app/_utils/images/pngwing.png";
 import Image from "next/image";
 import Link from "next/link";
 import LoverIcon from "./_utils/icons/LoverIcon";
+import PokedexIcon from "./_utils/icons/PokedexIcon";
 import styles from "./mainPage.module.css";
 
 const MainPage = () => {
@@ -17,6 +18,9 @@ const MainPage = () => {
           />
         </span>
         <Link href={"/gotta"}>{"시작하려면 화면을 눌러주세요."}</Link>
+        <Link href={"/pokedex"}>
+          <PokedexIcon className={styles.pokedex} />
+        </Link>
         <Link href={"/lover"}>
           <LoverIcon className={styles.lover} />
         </Link>

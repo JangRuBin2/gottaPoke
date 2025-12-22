@@ -20,6 +20,13 @@
     margin-top: 10px;
   }
 }
+.pokedex {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  cursor: pointer;
+}
+
 .lover {
   position: fixed;
   bottom: 30px;
