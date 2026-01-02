@@ -9,19 +9,21 @@ const MainPage = () => {
   return (
     <>
       <div className={styles.container}>
-        <span>
+        <div className={styles.imageWrapper}>
           <Image
             src={mainImage}
             fill
             alt={"gottaPoke_mainImage"}
             style={{ objectFit: "contain" }}
           />
-        </span>
-        <Link href={"/gotta"}>{"시작하려면 화면을 눌러주세요."}</Link>
-        <Link href={"/pokedex"}>
+        </div>
+        <Link href={"/gotta"} className={styles.startButton}>
+          {"시작하려면 화면을 눌러주세요."}
+        </Link>
+        <Link href={"/pokedex"} className={styles.pokedexLink}>
           <PokedexIcon className={styles.pokedex} />
         </Link>
-        <Link href={"/lover"}>
+        <Link href={"/lover"} className={styles.loverLink}>
           <LoverIcon className={styles.lover} />
         </Link>
       </div>

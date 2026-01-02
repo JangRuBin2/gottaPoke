@@ -1,26 +1,31 @@
 .contents {
   display: flex;
   flex-direction: column;
-  min-height: 500px;
+  min-height: calc(100vh - 64px);
   align-items: center;
   width: 100%;
   gap: 10px;
   scrollbar-width: thin;
+  padding-top: 64px;
 }
 .loading {
   height: 100%;
 }
 .title {
-  padding: 20px 20px 0 20px;
+  padding: 30px 20px 10px 20px;
   display: flex;
   gap: 20px;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 10%;
-  color: white;
   & > h1 {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #0EA5E9, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
   }
 }
 
@@ -30,25 +35,30 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: 20px;
-  padding-bottom: 120px; /* handler 높이만큼 여백 추가 */
+  padding-bottom: 140px;
   align-items: center;
   min-height: 500px;
   gap: 8px;
-  box-sizing: border-box; /* padding이 height에 포함되도록 설정 */
+  box-sizing: border-box;
 }
 
 .handler {
-  padding: 10px;
-  background-color: #324348;
+  padding: 16px;
+  padding-bottom: 24px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.95));
+  backdrop-filter: blur(8px);
+  border-top: 2px solid rgba(14, 165, 233, 0.2);
+  box-shadow: 0 -4px 12px rgba(14, 165, 233, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 12px;
   width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 20;
-  height: 100px; /* handler의 높이 지정 */
+  min-height: 110px;
 }
 .getCard {
   display: inline-flex;
@@ -60,14 +70,24 @@
     align-items: center;
     justify-content: center;
     font-size: larger;
+    font-weight: 600;
     color: white;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    background-color: #324348;
-    border: 1px solid var(--gray-color);
-    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
+    background: linear-gradient(to right, #0EA5E9, #3B82F6);
+    border: none;
+    border-radius: 12px;
     width: 100px;
+    height: 40px;
+    transition: all 0.3s ease;
     & > svg {
       fill: white;
+    }
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(14, 165, 233, 0.4);
+    }
+    &:active {
+      transform: translateY(0);
     }
   }
 }
@@ -80,7 +100,7 @@
   display: flex;
   gap: 10px;
   width: 100%;
-  padding: 10px 10px 0 10px;
+  padding: 0 10px;
   align-items: center;
   justify-content: center;
 }
@@ -90,14 +110,27 @@
   align-items: center;
   justify-content: center;
   font-size: larger;
-  background-color: #b3ccd9;
-  border: 1px solid var(--gray-color);
+  background: linear-gradient(to right, #BAE6FD, #7DD3FC);
+  border: 2px solid rgba(14, 165, 233, 0.2);
   width: 100px;
-  height: 32px;
+  height: 36px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(14, 165, 233, 0.2);
+  transition: all 0.3s ease;
   & > div {
     display: flex;
     align-items: center;
+  }
+  &:hover {
+    background: linear-gradient(to right, #7DD3FC, #38BDF8);
+    border-color: rgba(14, 165, 233, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
   }
 }

@@ -14,16 +14,18 @@ html,
 body {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to bottom, #607d8b, #324148);
+  background: linear-gradient(to bottom, #E0F4FF, #BAE6FD);
   font-family: "Roboto", sans-serif;
 }
 a {
   text-decoration: none;
 }
 :root {
-  --thin-border: 1px solid #f6cece;
-  --secondary-color: #6fe398;
-  --primary-color: #a5e67a;
-  --ligth-primary-color: #f2feb9;
-  --gray-color: #d8d8d8;
+  --thin-border: 1px solid #BAE6FD;
+  --secondary-color: #38BDF8;
+  --primary-color: #0EA5E9;
+  --light-primary-color: #E0F4FF;
+  --dark-primary-color: #0284C7;
+  --text-color: #0C4A6E;
+  --gray-color: #64748B;
 }

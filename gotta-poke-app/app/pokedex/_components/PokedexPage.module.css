@@ -4,20 +4,26 @@
   min-height: 100vh;
   width: 100%;
   align-items: center;
-  padding-bottom: 80px;
+  padding-top: 64px;
+  padding-bottom: 100px;
 }
 
 .header {
-  padding: 20px;
+  padding: 30px 20px 20px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: white;
 }
 
 .header > h1 {
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #0EA5E9, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
 }
 
 .loadingContainer {
@@ -34,8 +40,21 @@
   align-items: center;
   min-height: 500px;
   width: 100%;
-  color: white;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  margin: 20px;
+  border: 2px solid rgba(14, 165, 233, 0.2);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.15);
+}
+
+.emptyContainer > p {
   font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #0EA5E9, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .gridContainer {
@@ -53,28 +72,37 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 10px;
-  background-color: #324348;
+  padding: 16px;
+  padding-bottom: 24px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.95));
+  backdrop-filter: blur(8px);
+  border-top: 2px solid rgba(14, 165, 233, 0.2);
+  box-shadow: 0 -4px 12px rgba(14, 165, 233, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 20;
-  height: 60px;
+  min-height: 70px;
 }
 
 .homeBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #b3ccd9;
-  border: 1px solid var(--gray-color);
+  background: linear-gradient(to right, #BAE6FD, #7DD3FC);
+  border: 2px solid rgba(14, 165, 233, 0.2);
   width: 100px;
   height: 40px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(14, 165, 233, 0.2);
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .homeBtn:hover {
-  opacity: 0.8;
+  background: linear-gradient(to right, #7DD3FC, #38BDF8);
+  border-color: rgba(14, 165, 233, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
 }

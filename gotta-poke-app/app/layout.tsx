@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import SessionCheck from "@/components/SessionCheck";
 import SessionProvider from "@/components/SessionProvider";
 import { Roboto } from "next/font/google";
@@ -11,8 +12,8 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "gotta Poke",
-  description: "get your poketmon for free",
+  title: "Poke P!ck",
+  description: "Pick your favorite Pokemon!",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -21,7 +22,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={roboto.className}>
         <SessionProvider>
           <SessionCheck />
-          {children}
+          <Header />
+          <main className="min-h-screen">{children}</main>
           <ToastContainer
             position="top-right"
             autoClose={3000}

@@ -80,12 +80,12 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-100 via-sky-200 to-blue-200 p-4">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-center">
-            <h1 className="text-4xl font-bold text-white mb-2">Gotta Poke!</h1>
-            <p className="text-blue-100">새로운 트레이너 등록</p>
+        <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden border border-sky-200">
+          <div className="bg-gradient-to-r from-sky-400 to-blue-400 p-8 text-center">
+            <h1 className="text-4xl font-bold text-white mb-2 drop-shadow-md">Poke P!ck</h1>
+            <p className="text-sky-50">새로운 트레이너 등록</p>
           </div>
 
           <div className="p-8">
@@ -103,7 +103,7 @@ export default function RegisterPage() {
                   type="text"
                   required
                   autoComplete="name"
-                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring-0 outline-none transition-colors text-gray-900"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-sky-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none transition-all text-gray-900 bg-sky-50/50"
                   placeholder="포켓몬 마스터"
                   value={formData.name}
                   onChange={(e) =>
@@ -125,7 +125,7 @@ export default function RegisterPage() {
                   type="email"
                   required
                   autoComplete="email"
-                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring-0 outline-none transition-colors text-gray-900"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-sky-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none transition-all text-gray-900 bg-sky-50/50"
                   placeholder="trainer@pokemon.com"
                   value={formData.email}
                   onChange={(e) =>
@@ -148,7 +148,7 @@ export default function RegisterPage() {
                     type={showPassword ? "text" : "password"}
                     required
                     autoComplete="new-password"
-                    className="w-full px-4 py-3 pr-12 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring-0 outline-none transition-colors text-gray-900"
+                    className="w-full px-4 py-3 pr-12 rounded-xl border-2 border-sky-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-200 outline-none transition-all text-gray-900 bg-sky-50/50"
                     placeholder="최소 8자 이상"
                     value={formData.password}
                     onChange={(e) =>
@@ -158,7 +158,7 @@ export default function RegisterPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-sky-500 hover:text-sky-700 transition-colors"
                   >
                     {showPassword ? (
                       <svg
@@ -212,7 +212,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transform transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full bg-gradient-to-r from-sky-500 to-blue-500 text-white font-bold py-3 px-4 rounded-xl hover:from-sky-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transform transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md"
               >
                 {loading ? (
                   <span className="flex items-center justify-center">
@@ -249,7 +249,7 @@ export default function RegisterPage() {
                 이미 계정이 있으신가요?{" "}
                 <Link
                   href="/auth/login"
-                  className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+                  className="text-sky-600 font-semibold hover:text-sky-700 transition-colors"
                 >
                   로그인
                 </Link>
@@ -258,7 +258,7 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        <p className="text-center text-white text-sm mt-6 drop-shadow-lg">
+        <p className="text-center text-sky-700 font-medium text-sm mt-6 drop-shadow-sm">
           지금 가입하고 포켓몬 여정을 시작하세요!
         </p>
       </div>

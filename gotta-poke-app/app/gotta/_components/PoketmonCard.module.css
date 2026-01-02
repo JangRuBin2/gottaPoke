@@ -1,14 +1,26 @@
 .title {
-  padding-bottom: 5px;
-  border-bottom: 1px solid;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(14, 165, 233, 0.3);
+  width: 100%;
+  text-align: center;
+  & > span {
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #0EA5E9, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: capitalize;
+  }
 }
 .cardContainer {
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-  width: 150px;
-  height: 240px;
-  border: var(--thin-border);
-  background-color: #fbfbef;
-  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.2);
+  width: 160px;
+  height: 250px;
+  border: 2px solid rgba(14, 165, 233, 0.3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.95));
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
   margin: 10px;
   padding: 20px;
   display: inline-flex;
@@ -17,10 +29,22 @@
   align-items: center;
   overflow: hidden;
   position: relative;
-  transition: transform 0.6s;
-  transform: perspective(800px) rotateY(0deg);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: perspective(1000px) rotateY(0deg);
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 12px 28px rgba(14, 165, 233, 0.3);
+    transform: perspective(1000px) rotateY(0deg) translateY(-5px);
+  }
   > .checkBox {
     z-index: 10;
+    & > input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      accent-color: #0EA5E9;
+      border-radius: 6px;
+    }
   }
   > .container {
     display: flex;
@@ -28,23 +52,45 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    cursor: pointer;
     & > audio {
       display: none;
     }
     & > span {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       position: relative;
-      display: inline-block;
-      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
+      overflow: visible;
+      background: radial-gradient(circle, rgba(186, 230, 253, 0.2), transparent);
+      border-radius: 50%;
       & > img {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 4px 8px rgba(14, 165, 233, 0.2));
+        transition: transform 0.3s ease;
+      }
+      &:hover > img {
+        transform: scale(1.05);
       }
     }
   }
 }
 .cardBack {
-  transform: perspective(800px) rotateY(180deg);
+  transform: perspective(1000px) rotateY(180deg);
+  background: linear-gradient(135deg, rgba(186, 230, 253, 0.5), rgba(125, 211, 252, 0.5));
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.3), transparent);
+    border-radius: 50%;
+  }
 }
