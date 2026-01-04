@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd gotta-poke-app && npm run build",
-  "devCommand": "cd gotta-poke-app && npm run dev",
-  "installCommand": "cd gotta-poke-app && npm install",
-  "outputDirectory": "gotta-poke-app/.next"
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "outputDirectory": ".next"
 }
