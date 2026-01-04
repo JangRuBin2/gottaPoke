@@ -1,7 +1,0 @@
-{
-  "buildCommand": "cd gotta-poke-app && npm run build",
-  "outputDirectory": "gotta-poke-app/.next",
-  "installCommand": "cd gotta-poke-app && npm install",
-  "framework": "nextjs",
-  "ignoreCommand": "cd gotta-poke-app && npx next info"
-}
