@@ -6,6 +6,10 @@ export type PokeDetail = {
   // 이름
   names: Names[];
   id: number;
+  // 전설의 포켓몬 여부
+  is_legendary: boolean;
+  // 환상의 포켓몬 여부
+  is_mythical: boolean;
 };
 export type Names = {
   language: Language;

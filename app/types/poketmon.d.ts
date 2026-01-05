@@ -20,6 +20,14 @@ declare global {
     front_shiny: string;
     front_default: string;
   };
+  type PokemonType = {
+    slot: number;
+    type: {
+      name: string;
+      url: string;
+    };
+  };
+
   type Poketmon = {
     // 울음소리
     cries: Cries;
@@ -31,6 +39,12 @@ declare global {
     sprites: Sprites;
     // 무게
     weight: number;
+    // 전설의 포켓몬 여부
+    is_legendary?: boolean;
+    // 환상의 포켓몬 여부
+    is_mythical?: boolean;
+    // 포켓몬 타입
+    types?: PokemonType[];
   };
 }
 export {};

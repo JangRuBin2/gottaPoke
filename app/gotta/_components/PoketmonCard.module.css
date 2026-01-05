@@ -36,6 +36,11 @@
     box-shadow: 0 12px 28px rgba(14, 165, 233, 0.3);
     transform: perspective(1000px) rotateY(0deg) translateY(-5px);
   }
+  @media (min-width: 768px) {
+    width: 220px;
+    height: 320px;
+    padding: 24px;
+  }
   > .checkBox {
     z-index: 10;
     & > input[type="checkbox"] {
@@ -66,6 +71,10 @@
       overflow: visible;
       background: radial-gradient(circle, rgba(186, 230, 253, 0.2), transparent);
       border-radius: 50%;
+      @media (min-width: 768px) {
+        width: 180px;
+        height: 180px;
+      }
       & > img {
         width: 100%;
         height: 100%;
@@ -92,5 +101,41 @@
     height: 80px;
     background: radial-gradient(circle, rgba(14, 165, 233, 0.3), transparent);
     border-radius: 50%;
+  }
+}
+
+.legendary {
+  border: 3px solid transparent;
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.95)) padding-box,
+    linear-gradient(135deg, #FFD700, #FFA500, #FFD700, #FFA500) border-box;
+  box-shadow:
+    0 8px 20px rgba(255, 215, 0, 0.4),
+    0 0 30px rgba(255, 215, 0, 0.3),
+    inset 0 0 20px rgba(255, 215, 0, 0.1);
+  &:hover {
+    box-shadow:
+      0 12px 28px rgba(255, 215, 0, 0.5),
+      0 0 40px rgba(255, 215, 0, 0.4),
+      inset 0 0 30px rgba(255, 215, 0, 0.15);
+  }
+}
+
+.mythical {
+  border: 3px solid transparent;
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.95)) padding-box,
+    linear-gradient(135deg, #E879F9, #C084FC, #A855F7, #C084FC) border-box;
+  box-shadow:
+    0 8px 20px rgba(232, 121, 249, 0.4),
+    0 0 30px rgba(192, 132, 252, 0.3),
+    inset 0 0 20px rgba(232, 121, 249, 0.1);
+  &:hover {
+    box-shadow:
+      0 12px 28px rgba(232, 121, 249, 0.5),
+      0 0 40px rgba(192, 132, 252, 0.4),
+      inset 0 0 30px rgba(232, 121, 249, 0.15);
   }
 }

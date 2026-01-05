@@ -24,6 +24,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <SessionCheck />
           <Header />
           <main className="min-h-screen">{children}</main>
+          <footer className="bg-gray-50 border-t border-gray-200 py-4 text-center text-xs text-gray-500">
+            <p>This project is a non-commercial fan-made application.</p>
+            <p>Pokémon and Pokémon character names are trademarks of Nintendo.</p>
+            <p>This project is not affiliated with or endorsed by Nintendo.</p>
+          </footer>
           <ToastContainer
             position="top-right"
             autoClose={3000}
