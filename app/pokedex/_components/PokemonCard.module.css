@@ -63,18 +63,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   width: 100%;
   z-index: 1;
 }
 
-.pokemonId {
-  font-size: 1.1rem;
+.koreanName {
+  font-size: 1rem;
   font-weight: 700;
-  background: linear-gradient(to right, #0EA5E9, #3B82F6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #0EA5E9;
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pokemonId {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(14, 165, 233, 0.7);
 }
 
 .count {

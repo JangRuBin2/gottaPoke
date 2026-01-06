@@ -7,30 +7,11 @@ type PokemonCardProps = {
   pokemonId: number;
   thumbnailUrl: string;
   count: number;
+  koreanName: string;
+  rarity: "mythical" | "legendary" | "normal";
 };
 
-const PokemonCard = ({ pokemonId, thumbnailUrl, count }: PokemonCardProps) => {
-  const [rarity, setRarity] = useState<"mythical" | "legendary" | null>(null);
-
-  useEffect(() => {
-    const fetchRarity = async () => {
-      try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
-        if (response.ok) {
-          const data = await response.json();
-          if (data.is_mythical) {
-            setRarity("mythical");
-          } else if (data.is_legendary) {
-            setRarity("legendary");
-          }
-        }
-      } catch (error) {
-        console.error("Failed to fetch rarity:", error);
-      }
-    };
-
-    fetchRarity();
-  }, [pokemonId]);
+const PokemonCard = ({ pokemonId, thumbnailUrl, count, koreanName, rarity }: PokemonCardProps) => {
 
   const getRarityClass = () => {
     if (rarity === "mythical") return styles.mythical;
@@ -51,11 +32,12 @@ const PokemonCard = ({ pokemonId, thumbnailUrl, count }: PokemonCardProps) => {
         />
       </div>
       <div className={styles.info}>
+        <span className={styles.koreanName}>{koreanName}</span>
         <span className={styles.pokemonId}>No. {pokemonId}</span>
         {count > 1 && (
           <span className={styles.count}>{count}장 보유</span>
         )}
-        {rarity && (
+        {rarity !== "normal" && (
           <span className={styles.rarityBadge}>
             {rarity === "mythical" ? "환상" : "전설"}
           </span>

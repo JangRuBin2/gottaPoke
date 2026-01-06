@@ -14,7 +14,8 @@
 .title {
   padding: 30px 20px 10px 20px;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 12px;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -29,6 +30,28 @@
   }
 }
 
+.selectionInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  border-radius: 20px;
+  background: rgba(240, 249, 255, 0.8);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+.selectedCount {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0EA5E9;
+}
+
+.noSelection {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(14, 165, 233, 0.6);
+}
+
 .contentBox {
   height: 100%;
   display: flex;
@@ -36,10 +59,88 @@
   justify-content: center;
   padding: 20px;
   padding-bottom: 140px;
-  align-items: center;
+  align-items: flex-start;
   min-height: 500px;
-  gap: 8px;
+  gap: 16px;
   box-sizing: border-box;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.selectedCardWrapper {
+  position: relative;
+  cursor: pointer;
+  &::after {
+    content: '✓';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #0EA5E9, #3B82F6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.5);
+    z-index: 10;
+    animation: checkmark-pop 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@keyframes checkmark-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.checkboxContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(14, 165, 233, 0.8);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  & > span {
+    transition: color 0.2s ease;
+  }
+  &:hover {
+    color: #0EA5E9;
+  }
+}
+
+.cardCheckbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #0EA5E9;
+  border-radius: 4px;
 }
 
 .handler {
@@ -122,6 +223,32 @@
   }
 }
 
+.selectAllBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
+  background: linear-gradient(to right, #0EA5E9, #06B6D4);
+  border: none;
+  border-radius: 12px;
+  padding: 0 16px;
+  height: 40px;
+  white-space: nowrap;
+  width: auto;
+  min-width: fit-content;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(14, 165, 233, 0.4);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
 .handler .save {
   display: flex;
   gap: 10px;
@@ -164,5 +291,99 @@
   &:disabled:hover {
     transform: none;
     box-shadow: 0 2px 6px rgba(14, 165, 233, 0.2);
+  }
+}
+
+.saveBtn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  background: linear-gradient(to right, #10B981, #059669) !important;
+  border: 2px solid rgba(16, 185, 129, 0.3) !important;
+  width: auto !important;
+  min-width: 120px !important;
+  height: 40px !important;
+  padding: 8px 16px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3) !important;
+  transition: all 0.3s ease !important;
+  &:hover:not(:disabled) {
+    background: linear-gradient(to right, #059669, #047857) !important;
+    border-color: rgba(16, 185, 129, 0.5) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.4) !important;
+  }
+  &:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    pointer-events: none !important;
+    background: linear-gradient(to right, #D1D5DB, #9CA3AF) !important;
+  }
+}
+
+.saveBtnText {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 저장 시 빛 터지는 효과 */
+.saveEffectContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: particle-burst 1.2s ease-out forwards;
+  box-shadow: 0 0 10px currentColor;
+}
+
+@keyframes particle-burst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
+}
+
+.centerFlash {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.8), rgba(255, 165, 0, 0.4), transparent);
+  animation: center-flash 0.6s ease-out forwards;
+}
+
+@keyframes center-flash {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
   }
 }
