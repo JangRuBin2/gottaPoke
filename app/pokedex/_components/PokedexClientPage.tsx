@@ -38,7 +38,7 @@ const PokedexClientPage = () => {
 
         const data = await response.json();
         const koreanName = data.names?.find((n: any) => n.language.name === 'ko')?.name || `포켓몬 ${pokemon.pokemonId}`;
-        const rarity = data.is_mythical ? 'mythical' : data.is_legendary ? 'legendary' : 'normal';
+        const rarity: 'mythical' | 'legendary' | 'normal' = data.is_mythical ? 'mythical' : data.is_legendary ? 'legendary' : 'normal';
 
         return {
           ...pokemon,
