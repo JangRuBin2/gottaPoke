@@ -68,7 +68,7 @@ const PokedexClientPage = () => {
         throw new Error(data.error || "포켓몬 조회에 실패했습니다");
       }
 
-      const extendedData = await fetchExtendedData(data.data);
+      const extendedData = await fetchExtendedData(data.pokemons || []);
       setPokemons(extendedData);
     } catch (error) {
       toast.error(

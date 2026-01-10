@@ -23,10 +23,27 @@ model User {
 
 model Pokemon {
   id           Int      @id @default(autoincrement())
-  pokemonId    Int // 포켓몬 고유번호
+  userId       Int?     // 사용자 ID (nullable for backward compatibility)
+  pokemonId    Int      // 포켓몬 고유번호
   thumbnailUrl String   @db.VarChar(500) // 썸네일 이미지 URL
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
   @@index([pokemonId])
+  @@index([userId])
+}
+
+model GameScore {
+  id                Int      @id @default(autoincrement())
+  userId            Int
+  gameType          String   // "runner" (향후 확장: "puzzle", "battle")
+  selectedPokemonId Int
+  score             Int
+  distance          Int
+  obstaclesPassed   Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([userId, gameType])
+  @@index([gameType, score])
 }

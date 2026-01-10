@@ -62,6 +62,16 @@ export default function Header() {
               >
                 포켓몬 도감
               </Link>
+              <Link
+                href="/minigame"
+                className={`text-sm font-medium transition-colors ${
+                  pathname === "/minigame"
+                    ? "text-sky-600"
+                    : "text-gray-600 hover:text-sky-600"
+                }`}
+              >
+                미니게임
+              </Link>
 
               {/* 사용자 메뉴 */}
               <div className="flex items-center gap-3 pl-3 border-l border-sky-200">
@@ -155,6 +165,17 @@ export default function Header() {
               }`}
             >
               포켓몬 도감
+            </Link>
+            <Link
+              href="/minigame"
+              onClick={() => setMenuOpen(false)}
+              className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                pathname === "/minigame"
+                  ? "bg-sky-50 text-sky-600"
+                  : "text-gray-600 hover:bg-sky-50 hover:text-sky-600"
+              }`}
+            >
+              미니게임
             </Link>
 
             {/* 로그아웃 버튼 */}

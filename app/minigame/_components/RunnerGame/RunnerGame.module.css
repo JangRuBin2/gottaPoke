@@ -1,0 +1,448 @@
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.gameWrapper {
+  position: relative;
+  background: linear-gradient(to bottom, #E0F2FE, #BAE6FD);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.2);
+  margin-bottom: 2rem;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* HUD */
+.hud {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10;
+  max-width: calc(100% - 80px); /* 일시정지 버튼 공간 확보 */
+}
+
+.hudItem {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.hudLabel {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.hudValue {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1e293b;
+}
+
+.pauseButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pauseButton:hover {
+  background: white;
+  border-color: #0ea5e9;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  animation: fadeIn 0.3s ease-out;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 메뉴 화면 */
+.menuScreen {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 2rem;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.4s ease-out;
+  margin: auto;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.gameTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #0ea5e9, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.previewImage {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: 0.75rem auto;
+  image-rendering: pixelated;
+}
+
+.menuInstructions {
+  color: #64748b;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding: 0 0.5rem;
+}
+
+.highScoreText {
+  color: #f59e0b;
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.startButton,
+.changeButton,
+.resumeButton,
+.retryButton,
+.menuButton {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  min-height: 44px;
+}
+
+.startButton,
+.resumeButton,
+.retryButton {
+  background: linear-gradient(to right, #0ea5e9, #3b82f6);
+  color: white;
+}
+
+.startButton:hover,
+.resumeButton:hover,
+.retryButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+}
+
+.changeButton,
+.menuButton {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.changeButton:hover,
+.menuButton:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+/* 일시정지 화면 */
+.pauseScreen {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 2rem;
+  text-align: center;
+  min-width: 260px;
+  max-width: 340px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: auto;
+}
+
+.pauseTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e293b;
+  margin-bottom: 1.25rem;
+}
+
+/* 게임 오버 화면 */
+.gameOverScreen {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+  text-align: center;
+  max-width: 360px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.4s ease-out;
+  margin: auto;
+}
+
+.gameOverTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ef4444;
+  margin-bottom: 1rem;
+}
+
+.scoreBreakdown {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.scoreItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem 0;
+  border-bottom: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.scoreItem:last-child {
+  border-bottom: none;
+}
+
+.scoreValue {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #0ea5e9;
+}
+
+.highScoreValue {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #f59e0b;
+}
+
+.gameOverButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+/* 선택 프롬프트 */
+.selectPrompt {
+  text-align: center;
+  margin-top: 2rem;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .hud {
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: calc(50% - 1rem);
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .hudItem {
+    padding: 0.375rem 0.625rem;
+  }
+
+  .hudLabel {
+    font-size: 0.625rem;
+  }
+
+  .hudValue {
+    font-size: 0.75rem;
+  }
+
+  .pauseButton {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .overlay {
+    padding: 0.5rem;
+  }
+
+  .gameTitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .menuScreen {
+    padding: 1.5rem 1.25rem;
+    max-width: 95%;
+    width: 95%;
+  }
+
+  .gameOverScreen {
+    padding: 1.5rem 1.25rem;
+    max-width: 95%;
+    width: 95%;
+  }
+
+  .pauseScreen {
+    padding: 1.5rem 1.25rem;
+    max-width: 95%;
+    width: 95%;
+  }
+
+  .previewImage {
+    width: 80px;
+    height: 80px;
+    margin: 0.5rem auto;
+  }
+
+  .menuInstructions {
+    font-size: 0.875rem;
+    padding: 0 0.25rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .highScoreText {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .gameOverTitle {
+    font-size: 1.375rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .pauseTitle {
+    font-size: 1.375rem;
+    margin-bottom: 1rem;
+  }
+
+  .scoreBreakdown {
+    padding: 0.875rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .scoreValue,
+  .highScoreValue {
+    font-size: 1rem;
+  }
+
+  .scoreItem {
+    font-size: 0.8125rem;
+    padding: 0.5rem 0;
+  }
+
+  .startButton,
+  .changeButton,
+  .resumeButton,
+  .retryButton,
+  .menuButton {
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    margin-top: 0.5rem;
+  }
+
+  .gameOverButtons {
+    gap: 0.5rem;
+  }
+}
+
+/* 작은 모바일 기기 */
+@media (max-width: 480px) {
+  .gameTitle {
+    font-size: 1.375rem;
+  }
+
+  .menuScreen,
+  .gameOverScreen,
+  .pauseScreen {
+    padding: 1.25rem 1rem;
+  }
+
+  .previewImage {
+    width: 70px;
+    height: 70px;
+  }
+
+  .menuInstructions {
+    font-size: 0.8125rem;
+  }
+
+  .scoreItem {
+    font-size: 0.75rem;
+  }
+
+  .startButton,
+  .changeButton,
+  .resumeButton,
+  .retryButton,
+  .menuButton {
+    font-size: 0.875rem;
+  }
+}
